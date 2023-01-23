@@ -27,6 +27,8 @@ const AddUser = () => {
             <form onSubmit={handleAddUser}>
                 <input onBlur={handleInputBlur} type="text" name="name" placeholder='name' required />
                 <br />
+                <input onBlur={handleInputBlur} type="text" name="address" placeholder='address' required />
+                <br />
                 <input onBlur={handleInputBlur} type="email" name="email" placeholder='email' required />
                 <br />
                 <button type="submit">Add User</button>
