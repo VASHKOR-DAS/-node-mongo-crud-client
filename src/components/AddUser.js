@@ -9,6 +9,17 @@ const AddUser = () => {
         // const name = form.name.value;
         // const email = form.email.value;
         console.log(user);
+
+        // server a clint theke data send (post method)
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
     // multiple field add krr easy way
