@@ -6,9 +6,14 @@ const Home = () => {
 
     const handleDelete = user => {
         const agree = window.confirm(`Are you sure you want to delete: ${user.name}`)
-        // console.log(agree);
+
+        // agree thakle delete koro
         if (agree) {
-            console.log('user dlt id:', user._id);
+            fetch(`http://localhost:5000/users/${user._id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => console.log(data));
         }
     }
     return (
