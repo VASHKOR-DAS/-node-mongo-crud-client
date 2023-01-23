@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Home = () => {
     const users = useLoaderData();
@@ -22,8 +22,8 @@ const Home = () => {
                         alert('User deleted successfully');
 
                         // user delete hobar por display te jotogulo user obosisto ase tader dekhao, allUsr er joto id ase tar konotar sathe (user._id) delete kora id ta milbe na, tar mane oita show o hobe na
-                        const remainingUsers = 
-                        displayUsers.filter(allUsr => allUsr._id !== user._id);
+                        const remainingUsers =
+                            displayUsers.filter(allUsr => allUsr._id !== user._id);
                         setDisplayUsers(remainingUsers);
                     }
                 });
@@ -35,7 +35,13 @@ const Home = () => {
             <div>
                 {
                     displayUsers.map(user => <p key={user._id}>
-                        {user.name} {user.address} {user.email} <button onClick={() => handleDelete(user)}>X</button>
+                        {user.name} {user.address} {user.email}
+                        
+                        <Link to={`/update/${user._id}`}>
+                            <button>update</button>
+                        </Link>
+
+                        <button onClick={() => handleDelete(user)}>X</button>
                     </p>)
                 }
             </div>
