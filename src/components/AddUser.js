@@ -19,7 +19,12 @@ const AddUser = () => {
             body: JSON.stringify(user)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('user added successfully');
+                    event.target.reset();
+                } 
+            })
     }
 
     // multiple field add krr easy way
