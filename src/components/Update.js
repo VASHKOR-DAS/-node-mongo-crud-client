@@ -8,7 +8,7 @@ const Update = () => {
     const handleUpdateUser = event => {
         event.preventDefault();
         // console.log(user);
-        
+
         fetch(`http://localhost:5000/users/${storedUser._id}`, {
             method: 'PUT',
             headers: {
@@ -18,7 +18,10 @@ const Update = () => {
         })
         .then(res => res.json())
             .then(data => {
-               console.log(data);
+               if (data.modifiedCount) {
+                    alert('user updated');
+                    console.log(data);
+                }
             })
 
 
