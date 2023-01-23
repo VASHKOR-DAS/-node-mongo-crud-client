@@ -18,8 +18,8 @@ const AddUser = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
     // multiple field add krr easy way
