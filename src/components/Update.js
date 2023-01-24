@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const Update = () => {
     const storedUser = useLoaderData();
 
-    const [user, setUser] = useState({storedUser});
     const handleUpdateUser = event => {
         event.preventDefault();
-        // console.log(user);
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const address = event.target.address.value;
+        const user = {name, email, address};
+        console.log(user);
 
         fetch(`http://localhost:5000/users/${storedUser._id}`, {
             method: 'PUT',
@@ -28,27 +31,17 @@ const Update = () => {
 
     }
 
-
-
-    const handleInputChange = event => {
-        const field = event.target.name;
-        const value = event.target.value;
-        const newUser = { ...user } // user state a ja ase sob copy korlam
-        newUser[field] = value;
-        setUser(newUser);
-    }
-
     return (
         <div>
             <h2>Please Update : {storedUser.name} </h2>
 
 
             <form onSubmit={handleUpdateUser}>
-                <input onChange={handleInputChange} defaultValue={storedUser.name} type="text" name="name" placeholder='name' required />
+                <input defaultValue={storedUser.name} type="text" name="name" placeholder='name' required />
                 <br />
-                <input onChange={handleInputChange} defaultValue={storedUser.address} type="text" name="address" placeholder='address' required />
+                <input defaultValue={storedUser.address} type="text" name="address" placeholder='address' required />
                 <br />
-                <input onChange={handleInputChange} defaultValue={storedUser.email} type="email" name="email" placeholder='email' required />
+                <input defaultValue={storedUser.email} type="email" name="email" placeholder='email' required />
                 <br />
                 <button type="submit">Update User</button>
             </form>
